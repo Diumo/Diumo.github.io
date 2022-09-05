@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./360.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="brow">
+        <div class="nav">
+            <img src="./img/icon.png" alt="">
+            <ul class="list">
+                <li>论坛</li>
+                <li>拓展</li>
+                <li>Mac版</li>
+            </ul>
+        </div>
+        <div class="sub">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="bigbox">
+            <div class="box1 page">
+                <div class="title">
+                    <p class="front">畅快浏览 极致体验</p>
+                    <p class="center">全新Chrome内核浏览器，性能更强，速度更快</p>
+                    <span>
+                        <a href="">32位版本</a>
+                        <a href="">
+                            <img src="./img/win.png" alt="">
+                            64位版本
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div class="box2 page">
+                <div class="text">
+                    <p class="front">极速</p>
+                    <div class="line"></div>
+                    <p class="center">全新Chromium内核</p>
+                    <p class="behind">性能强劲，快如闪电</p>
+                    <a href=""></a>
+                </div>
+                <video src="./img/plant.mp4" autoplay muted></video>
+            </div>
+            <div class="box3 page">
+                <div class="text">
+                    <p class="front">极酷</p>
+                    <div class="line"></div>
+                    <p class="center">暗夜炫黑模式</p>
+                    <p class="behind">定义酷，定义你</p>
+                    <a href=""></a>
+                </div>
+                <video src="./img/face.mp4" autoplay muted></video>
+            </div>
+            <div class="box4 page">
+                <div class="text">
+                    <p class="front">极安全</p>
+                    <div class="line"></div>
+                    <p class="center">DNS加密防劫持</p>
+                    <p class="behind">安全升级，肆意无忌</p>
+                    <a href=""></a>
+                </div>
+                <video src="./img/door.mp4" autoplay muted></video>
+            </div>
+            <div class="box5 page">
+                <div class="text">
+                    <p class="front">极视界</p>
+                    <div class="line"></div>
+                    <p class="center">4K高清视频播放</p>
+                    <p class="behind">还原真实之美，尽显万物本色</p>
+                    <a href=""></a>
+                </div>
+                <video src="./img/screen.mp4" autoplay muted></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var dot = 0;
+        function zzz(dot) {
+            $(".page").eq(dot).css({
+                opacity: 1,
+                visibility: "visible",
+            }).siblings().css({
+                opacity: 0,
+                visibility: "hidden",
+            })
+            $(".sub span").eq(dot).css({
+                backgroundColor: "orange",
+            }).siblings().css({
+                backgroundColor: "white",
+            })
+        }
+        zzz(dot);
+        $(".sub").on("click", "span", function () {
+            dot = $(this).index();
+            zzz(dot)
+            console.log(dot);
+        })
+
+        window.addEventListener("wheel", function () {
+            // console.log(event.wheelDelta);
+            if (event.wheelDelta < 0 && dot <= 5) {
+                dot += 1;
+                zzz(dot)
+            }
+            if (dot >= 5) {
+                dot = 5;
+                zzz(dot)
+            }
+            if (event.wheelDelta > 0 && dot <= 5) {
+                dot -= 1;
+                zzz(dot)
+            }
+            if (dot <= 0) {
+                dot = 0;
+                zzz(dot)
+            }
+        });
+    </script>
+</body>
+
+</html>
