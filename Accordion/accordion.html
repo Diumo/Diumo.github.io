@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="img">
+        <div class="li"></div>
+        <div class="li"></div>
+        <div class="li"></div>
+        <div class="li"></div>
+    </div>
+
+    <style>
+        .img {
+            width: 390px;
+            height: 200px;
+            background-color: lightblue;
+            display: flex;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .img .li {
+            width: 30px;
+            height: 100%;
+            background-size: cover;
+            transition: all .3s;
+
+        }
+
+        .img .li:nth-child(1) {
+            background-image: url("./img/1.jpg");
+
+        }
+
+        .img .li:nth-child(2) {
+            background-image: url("./img/2.jpg");
+            width: 300px;
+        }
+
+        .img .li:nth-child(3) {
+            background-image: url("./img/3.jpg");
+        }
+
+        .img .li:nth-child(4) {
+            background-image: url("./img/4.jpg");
+        }
+    </style>
+
+    <script>
+        var liEl = document.querySelectorAll(".img .li")
+
+        liEl.forEach(function (e, i) {
+            liEl[i].onclick = function () {
+                liEl.forEach(function (el, index) {
+                    if (i === index) {
+                        el.style.width = "300px";
+                    } else {
+                        el.style.width = "30px";
+                    }
+                })
+            }
+
+        });
+    </script>
+</body>
+
+</html>
