@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="my-minireset.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .fag {
+            width: 600px;
+            height: 400px;
+            background-color: rgba(120, 114, 114, 0.071);
+            border-radius: 30px;
+
+            position: absolute;
+            top: 30px;
+            left: calc(50% - 300px);
+        }
+
+        .fag .thumb {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            /* cursor: none; */
+        }
+
+        .fag .thumb img {
+            width: 100%;
+            display: block;
+        }
+
+        .fag .thumb .mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0, 0, 0, 0.4);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .fagpic {
+            width: 230px;
+            height: 230px;
+            background-image: url("./img/season1.jpg");
+            background-size: 200%;
+            background-repeat: no-repeat;
+
+            position: absolute;
+            top: 30px;
+            left: 320px;
+
+        }
+
+        .choose {
+            width: 200px;
+            height: 50px;
+            position: absolute;
+            top: 260px;
+            left: 50px;
+            background-color: white;
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            box-shadow: 0 0 2px 0 red;
+        }
+
+        .choose>div {
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            border-radius: 5px;
+        }
+
+        .choose>div:nth-child(1) {
+            background-image: url("./img/season1.jpg");
+        }
+
+        .choose>div:nth-child(2) {
+            background-image: url("./img/season2.jpg");
+        }
+
+        .choose>div:nth-child(3) {
+            background-image: url("./img/season3.jpg");
+        }
+
+        .choose>div:nth-child(4) {
+            background-image: url("./img/season4.jpg");
+        }
+
+        select {
+            width: 120px;
+            height: 35px;
+            border: 1px solid #f2f2f2;
+            border-radius: 15px;
+
+            padding-left: 20px;
+
+            color: #666666;
+            text-align: center;
+            font-size: 15px;
+
+            position: absolute;
+            top: 272px;
+            left: 320px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="fag">
+        <div class="thumb">
+            <img src="./img/season1.jpg" alt="">
+            <div class="mask"></div>
+        </div>
+        <div class="fagpic"></div>
+        <div class="choose">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <select class="option">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+            <option value="8">8</option>
+        </select>
+    </div>
+
+    <script>
+        var mul = 2;
+        var num = 0;
+        var pics = ["./img/season1.jpg", "./img/season2.jpg", "./img/season3.jpg", "./img/season4.jpg"]
+        $("select").change(function () {
+            mul = $(this).val();
+            $(".mask").css({
+                top: 0,
+                left: 0,
+            })
+            changMul(mul);
+
+        })
+
+        function changMul(mul) {
+            $(".fagpic")[0].style["background-size"] = 100 * mul + "%";
+
+            $(".mask").css({
+                width: $(".thumb").width() / mul,
+                height: $(".thumb").height() / mul,
+            })
+
+            $(".thumb").mousemove(function () {
+                // console.log(event.pageX - this.offsetLeft);
+                // console.log(event.pageX, this.offsetLeft + $(".fag")[0].offsetLeft);
+
+                var mx = event.pageX - this.offsetLeft - $(".fag")[0].offsetLeft;
+                var my = event.pageY - this.offsetTop - $(".fag")[0].offsetTop;
+
+                var maskX = mx - ($(".mask").width() / 2);
+                var maskY = my - ($(".mask").height() / 2);
+                // console.log(maskX);
+                // console.log($(".thumb").width() - ($(".mask").width() / 2));
+
+                if (maskX >= $(".thumb").width() - $(".mask").width()) {
+                    maskX = $(".thumb").width() - $(".mask").width();
+                } else if (maskX <= 0) {
+                    maskX = 0;
+                }
+                if (maskY >= $(".thumb").height() - $(".mask").height()) {
+                    maskY = $(".thumb").height() - $(".mask").height();
+                } else if (maskY <= 0) {
+                    maskY = 0;
+                }
+
+                $(".mask").css({
+                    top: maskY,
+                    left: maskX,
+                })
+
+                $(".fagpic")[0].style["background-position"] = -($(".fagpic").width() / $(".mask").width()) * maskX + "px " + -($(".fagpic").height() / $(".mask").height()) * maskY + "px";
+                // $(".air")[0].style["background-position"] = -maskX + "px " + -maskY + "px";
+            })
+        }
+
+        changMul(mul);
+
+
+        $(".choose").on("click", "div", function () {
+            console.log($(this).index());
+            num = $(this).index();
+
+            $(".thumb img")[0].src = pics[num];
+            $(".fagpic").css({
+                backgroundImage: 'url("' + pics[num] + '")',
+            })
+        })
+    </script>
+</body>
+
+</html>

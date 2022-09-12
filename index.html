@@ -6,16 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <!-- qwer -->
-    <!-- <a href="./360/360.html">360</a> -->
-    <span>手风琴</span>
-    <a class="accordion" href="./Accordion/accordion.html">
-        <!-- <img src="./img/accordion.gif" alt=""> -->
-    </a>
-
+    <!-- <span>手风琴</span>
+    <a class="accordion" href="./Accordion/accordion.html"></a>
     <style>
         .accordion {
             display: block;
@@ -24,7 +21,194 @@
             background-image: url("./img/accordion.gif");
             background-size: cover;
         }
-    </style>
+    </style> -->
+
+    <div class="works">
+        <div class="wrapper">
+            <ul class="skill">
+                <li>Html</li>
+                <li>js</li>
+                <li>jq</li>
+                <li>bs</li>
+                <li>h5&c3</li>
+            </ul>
+
+            <div class="contain">
+                <div class="html"></div>
+                <div class="js"></div>
+                <div class="jq"></div>
+                <div class="bs"></div>
+                <div class="hc"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let html = [{
+            title: "儿童模版",
+            link: "./Children/kid.html",
+            image: "./img/accordion.gif",
+        },
+        {
+            title: "手风琴",
+            link: "./Accordion/accordion.html",
+            image: "./img/accordion.gif",
+        }, {
+            title: "手风琴",
+            link: "./Accordion/accordion.html",
+            image: "./img/accordion.gif",
+        }]
+
+        let js = [{
+            title: "别踩白块",
+            link: "./别踩白块/别踩白块.html",
+            image: "./img/accordion.gif",
+        },
+        {
+            title: "放大镜",
+            link: "./magnifying-glass/fag.html",
+            image: "./img/accordion.gif",
+        }, {
+            title: "手风琴",
+            link: "./Accordion/accordion.html",
+            image: "./img/accordion.gif",
+        }];
+
+
+        let jq = [{
+            title: "bilibili漫画",
+            link: "./bilibili漫画/comic.html",
+            image: "./img/accordion.gif",
+        }, {
+            title: "360全屏滚动",
+            link: "./360/360.html",
+            image: "./img/accordion.gif",
+        }, {
+            title: "三级联动",
+            link: "./三级联动/linkage.html",
+            image: "./img/accordion.gif",
+        }]
+
+        let bs = [{
+            title: "整容",
+            link: "./整容/整容.html",
+            image: "./img/accordion.gif",
+        }, {
+            title: "服装",
+            link: "./服装/服装.html",
+            image: "./img/accordion.gif",
+        }]
+
+        let hc = [{
+            title: "loading&hover",
+            link: "./C3/loadings&hover.html",
+            image: "./img/accordion.gif",
+        }]
+
+
+
+        html.forEach((e) => {
+            let box = document.createElement("div");
+            let span = document.createElement("span");
+            span.innerHTML = e.title;
+            box.append(span);
+            let a = document.createElement("a");
+            a.href = e.link;
+            box.append(a);
+            $(a).css({
+                backgroundImage: 'url(' + e.image + ')',
+            })
+            $(".html").append(box);
+        })
+
+        js.forEach((e) => {
+            let box = document.createElement("div");
+            let span = document.createElement("span");
+            span.innerHTML = e.title;
+            box.append(span);
+            let a = document.createElement("a");
+            a.href = e.link;
+            box.append(a);
+            $(a).css({
+                backgroundImage: 'url(' + e.image + ')',
+            })
+            $(".js").append(box);
+        })
+
+
+        jq.forEach((e) => {
+            let box = document.createElement("div");
+            let span = document.createElement("span");
+            span.innerHTML = e.title;
+            box.append(span);
+            let a = document.createElement("a");
+            a.href = e.link;
+            box.append(a);
+            $(a).css({
+                backgroundImage: 'url(' + e.image + ')',
+            })
+            $(".jq").append(box);
+        })
+
+        bs.forEach((e) => {
+            let box = document.createElement("div");
+            let span = document.createElement("span");
+            span.innerHTML = e.title;
+            box.append(span);
+            let a = document.createElement("a");
+            a.href = e.link;
+            box.append(a);
+            $(a).css({
+                backgroundImage: 'url(' + e.image + ')',
+            })
+            $(".bs").append(box);
+        })
+        hc.forEach((e) => {
+            let box = document.createElement("div");
+            let span = document.createElement("span");
+            span.innerHTML = e.title;
+            box.append(span);
+            let a = document.createElement("a");
+            a.href = e.link;
+            box.append(a);
+            $(a).css({
+                backgroundImage: 'url(' + e.image + ')',
+            })
+            $(".hc").append(box);
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        $(".html").css({
+            visibility: "visible",
+            opacity: 1,
+        }).siblings().css({
+            visibility: "hidden",
+            opacity: 0,
+        });
+
+        $("ul").on("click", "li", function () {
+            $(".contain>div").eq($(this).index()).css({
+                visibility: "visible",
+                opacity: 1,
+            }).siblings().css({
+                visibility: "hidden",
+                opacity: 0,
+            });
+        })
+    </script>
 </body>
 
 </html>

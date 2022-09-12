@@ -85,46 +85,38 @@
     </div>
 
     <script>
-        var dot = 0;
-        function zzz(dot) {
-            $(".page").eq(dot).css({
-                opacity: 1,
-                visibility: "visible",
-            }).siblings().css({
-                opacity: 0,
-                visibility: "hidden",
-            })
-            $(".sub span").eq(dot).css({
+        var n = 0;
+
+        function zzz(n) {
+            $(".sub span").eq(n).css({
                 backgroundColor: "orange",
             }).siblings().css({
                 backgroundColor: "white",
             })
+
+            $(".bigbox").css("marginTop", -100 * n + "vh")
         }
-        zzz(dot);
+
+        zzz(n);
+
         $(".sub").on("click", "span", function () {
-            dot = $(this).index();
-            zzz(dot)
-            console.log(dot);
+            n = $(this).index();
+            zzz(n)
         })
 
         window.addEventListener("wheel", function () {
-            // console.log(event.wheelDelta);
-            if (event.wheelDelta < 0 && dot <= 5) {
-                dot += 1;
-                zzz(dot)
+            console.log(event.wheelDelta);
+
+            if (event.wheelDelta <= 0 && n <= 3) {
+                n += 1;
+                zzz(n);
             }
-            if (dot >= 5) {
-                dot = 5;
-                zzz(dot)
+
+            if (event.wheelDelta >= 0 && n > 0) {
+                n -= 1;
+                zzz(n);
             }
-            if (event.wheelDelta > 0 && dot <= 5) {
-                dot -= 1;
-                zzz(dot)
-            }
-            if (dot <= 0) {
-                dot = 0;
-                zzz(dot)
-            }
+
         });
     </script>
 </body>

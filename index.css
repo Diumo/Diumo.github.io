@@ -1,0 +1,65 @@
+body,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.works {
+  padding: 100px 0;
+}
+.works .wrapper {
+  width: 1200px;
+  height: 800px;
+  margin: 0 auto;
+}
+.works .wrapper ul {
+  display: flex;
+  padding: 5px 0;
+}
+.works .wrapper ul li {
+  width: 60px;
+  height: 35px;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.works .wrapper .contain {
+  position: relative;
+  width: 1000px;
+  height: 600px;
+  background-color: purple;
+  border: 3px solid red;
+  border-radius: 15px;
+}
+.works .wrapper .contain > div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.works .wrapper .contain > div > div {
+  width: 300px;
+  height: 150px;
+  border: 2px solid red;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+.works .wrapper .contain > div > div:hover {
+  transform: scale(1.02);
+}
+.works .wrapper .contain > div > div a {
+  display: block;
+  width: 200px;
+  height: 100px;
+  background-size: cover;
+}
+/*# sourceMappingURL=./index.css.map */

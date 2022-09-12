@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./my-minireset.css"> -->
+    <style>
+        .stage {
+            width: 360px;
+            height: 540px;
+            background-color: white;
+            margin: 0 auto;
+            border: 1px solid black;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stage .start {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            z-index: 2;
+        }
+
+        .stage .start h1 {
+            color: #fff;
+            height: 50px;
+            width: 100%;
+            line-height: 50px;
+            margin-top: 35%;
+            text-align: center;
+        }
+
+        .stage .start span {
+            display: block;
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            margin: 50px auto;
+            background-color: #4cd964;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+
+        .stage .main {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .stage .main div {
+            width: 90px;
+            height: 150px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .stage .main div.light {
+            background-color: white;
+        }
+
+        .stage .score {
+            width: 40px;
+            height: 20px;
+            background-color: #e8e8e8;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: calc(50% - 20px);
+            text-align: center;
+            line-height: 20px;
+            pointer-events: none;
+        }
+
+        .stage .over {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            text-align: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
+        }
+
+        .stage .over h1 {
+            color: #fff;
+            height: 50px;
+            width: 100%;
+            line-height: 50px;
+            margin-top: 35%;
+            text-align: center;
+        }
+
+        .stage .over h2 {
+            color: #fff;
+            height: 45px;
+            line-height: 45px;
+        }
+
+        .stage .over span {
+            display: block;
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            margin: 50px auto;
+            background-color: #4cd964;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="start">
+            <h1>别踩白块</h1>
+            <span>开始</span>
+        </div>
+        <div class="main"></div>
+        <div class="score">0</div>
+        <div class="over">
+            <h1>Game Over</h1>
+            <h2></h2>
+            <span>重新开始</span>
+        </div>
+    </div>
+
+    <script>
+        var startEl = document.querySelector(".start");
+        var startBtnEl = document.querySelector(".start span");
+        var mainEl = document.querySelector(".main");
+        var overEl = document.querySelector(".over");
+        var overTextEl = document.querySelector(".over h2")
+        var overBtnEl = document.querySelector(".over span")
+        var scoreEl = document.querySelector(".score");
+
+        var score = 0;
+        var speed = 0.01;
+
+        function Block(y) {
+            this.x = Math.floor(Math.random() * 4);
+            this.y = y;
+            this.node = document.createElement("div");
+            this.updateLocal();
+            mainEl.appendChild(this.node);
+
+            var _this = this;
+            this.node.onclick = function () {
+                this.classList.add("light");
+                this.style.display = "none";
+                _this.played = true;
+                event.stopPropagation()
+                ++score;
+                scoreEl.innerHTML = score;
+                if (score % 5 === 0) {
+                    speed += 0.002;
+                }
+            }
+
+        }
+
+        Block.prototype.move = function () {
+            this.y += speed;
+
+        }
+
+        Block.prototype.updateLocal = function () {
+            this.node.style.left = this.x * 90 + "px";
+            this.node.style.top = this.y * 150 + "px";
+        }
+
+        // var b = new Block(1);
+
+        var blocks = [];
+
+        function init() {
+            for (var i = 3; i > 0; i--) {
+                var b = new Block(i - 2);
+                blocks.push(b);
+            }
+        }
+
+        startBtnEl.onclick = function () {
+            startEl.style.display = "none";
+            init();
+            remove();
+        }
+
+        overBtnEl.onclick = function () {
+            overEl.style.display = "none";
+            blocks.forEach(function (block) {
+                mainEl.removeChild(block.node);
+                // blocks.splice(blocks.indexOf(block), 1);
+            });
+            blocks.splice(0, blocks.length);
+            init();
+            remove();
+            score = 0;
+            speed = 0.01;
+            scoreEl.innerHTML = "0";
+        }
+
+        function remove() {
+            var id = setInterval(function () {
+                blocks.forEach(function (block) {
+                    block.move();
+                    block.updateLocal();
+                })
+
+                console.log(speed - blocks[blocks.length - 1].speed);
+
+                if (blocks[blocks.length - 1].y >= -speed) {
+                    var b = new Block(-1);
+                    blocks.push(b);
+                }
+
+                mainEl.onclick = function () {
+                    clearInterval(id)
+                    overEl.style.display = "block";
+                    overTextEl.innerHTML = "得分:" + scoreEl.innerHTML;
+                }
+
+                var firstUnTouch = blocks.filter(function (block) {
+                    return !block.played;
+                })[0];
+                if (firstUnTouch && (firstUnTouch.y + 1) * 150 >= 540) {
+                    clearInterval(id);
+                    overEl.style.display = "block";
+                    overTextEl.innerHTML = "得分:" + scoreEl.innerHTML;
+                }
+
+                var lightTouch = blocks.filter(function (block) {
+                    return block.played;
+                })[0];
+
+                if (lightTouch && ((lightTouch.y + 1) * 150 >= 540)) {
+                    mainEl.removeChild(lightTouch.node);
+                    blocks.splice(blocks.indexOf(lightTouch), 1);
+                }
+            }, 10)
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="never">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <ul class="styleId">
+        <div>题材</div>
+        <li class="-1">全部</li>
+        <li class="999">热血</li>
+        <li class="997">古风</li>
+        <li class="1016">玄幻</li>
+        <li class="998">奇幻</li>
+        <li class="1023">悬疑</li>
+        <li class="1002">都市</li>
+        <li class="1096">历史</li>
+        <li class="1092">武侠仙侠</li>
+        <li class="1088">游戏竞技</li>
+        <li class="1081">悬疑灵异</li>
+        <li class="1063">架空</li>
+        <li class="1060">青春</li>
+        <li class="1054">西环</li>
+        <li class="1048">现代</li>
+        <li class="1028">正能量</li>
+        <li class="1015">科幻</li>
+    </ul>
+    <ul class="areaId">
+        <div>地区</div>
+        <li class="-1">全部</li>
+        <li class="1">大陆</li>
+        <li class="2">日本</li>
+        <li class="6">韩国</li>
+        <li class="5">其他</li>
+    </ul>
+    <ul class="isFinish">
+        <div>分类</div>
+        <li class="-1">全部</li>
+        <li class="0">连载</li>
+        <li class="1">完结</li>
+    </ul>
+    <ul class="order">
+        <div>排序</div>
+        <li class="0">人气推荐</li>
+        <li class="1">更新时间</li>
+        <li class="2">追漫人数</li>
+        <li class="3">上架时间</li>
+    </ul>
+    <ul class="box"></ul>
+
+    <style>
+        img {
+            width: 200px;
+            height: 300px;
+        }
+
+        ul {
+            display: flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        div {
+            width: 58px;
+            height: 28px;
+            line-height: 28px;
+            background-color: #e1e1e1;
+            font-size: 8px;
+            margin: 10px 0;
+            background-color: rgba(126, 123, 123, 0.129);
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        li {
+            display: block;
+            margin: 10px;
+        }
+
+
+        ul.box {
+            display: flex;
+            width: 100vw;
+            flex-wrap: wrap;
+            flex-wrap: wrap;
+
+        }
+
+        ul.box li {
+            width: 200px;
+            margin: 0 5px;
+        }
+
+        ul.box li h3 {
+            font-size: 16px;
+        }
+
+
+        .active {
+            background-color: gray;
+        }
+    </style>
+    <script>
+        var a = -1;
+        var b = -1;
+        var c = -1;
+        var d = 0;
+        zzz(a, b, c, d);
+
+        $("li.-1").css("color", "red");
+        $("ul.order li.0").css("color", "red");
+
+        $("ul.styleId li").on("click", function () {
+            $(this).css({
+                color: "red",
+            }).siblings().css({
+                color: "black",
+            })
+
+            $(".box").html("");
+            a = this.className;
+
+            zzz(a, b, c, d);
+        })
+
+        $("ul.areaId li").on("click", function () {
+            $(this).css({
+                color: "red",
+            }).siblings().css({
+                color: "black",
+            })
+
+            $(".box").html("");
+
+            b = this.className;
+            zzz(a, b, c, d);
+        })
+
+        $("ul.isFinish li").on("click", function () {
+            $(this).css({
+                color: "red",
+            }).siblings().css({
+                color: "black",
+            })
+
+            $(".box").html("");
+
+            c = this.className;
+            zzz(a, b, c, d);
+        })
+        $("ul.order li").on("click", function () {
+            $(this).css({
+                color: "red",
+            }).siblings().css({
+                color: "black",
+            })
+
+            $(".box").html("");
+
+            d = this.className;
+            console.log(d);
+            zzz(a, b, c, d);
+        })
+
+        function zzz(a, b, c, d) {
+            $.ajax({
+                url: "https://apis.netstart.cn/bcomic/ClassPage?styleId=" + a + "&areaId=" + b + "&isFinish=" + c + "&order=" + d + "&pageNum=1&pageSize=39&isFree=-1",
+                type: "GET",
+                success: function (result) {
+                    console.log(result.data.length);
+                    result.data.forEach(function (e) {
+
+                        $("ul.box").append(
+                            `<li class="item">
+                                <img style="width:200px;heigth: 300px;"
+                                src=${e.vertical_cover} alt="">
+                                <h3>${e.title}</h3>
+                            </li>`
+                        )
+                    })
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+
+            display: flex;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-right: 45px;
+        }
+
+        ul li {
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .linkage {
+            display: flex;
+            height: 500px;
+        }
+
+        .stair,
+        .foxbase,
+        .three-level {
+            width: 200px;
+            margin-right: 5px;
+            /* overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: hidden; */
+        }
+
+        .stair>span,
+        .foxbase>span,
+        .three-level>span {
+            display: block;
+            margin-bottom: 15px;
+            background-color: #e1e1e1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="linkage">
+        <div class="stair">
+            <span>省</span>
+            <ul class="province"></ul>
+        </div>
+        <div class="foxbase">
+            <span>市</span>
+            <ul class="city"></ul>
+        </div>
+        <div class="three-level">
+            <span>区</span>
+            <ul class="area"></ul>
+        </div>
+    </div>
+
+    <style>
+        body {
+
+            display: flex;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            margin-right: 45px;
+        }
+
+        ul li {
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+    </style>
+
+
+    <script>
+        $.get("./prov-county.json", function (res) {
+            res.forEach(function (e) {
+                if (e.split(":")[0].length === 2) {
+                    $("ul.province").append("<li class=" + e.split(":")[0] + ">" + e.split(":")[1] + "</li>")
+                }
+            })
+            $("ul.province li").on("click", function () {
+                $("ul.city").html("");
+                $("ul.area").html("");
+                $(this).css("color", "red").siblings().css("color", "black")
+                var prov = this.className
+                res.forEach(function (e) {
+                    if (e.split(":")[0].length === 4 && e.split(":")[0].substring(0, 2) === prov) {
+                        $("ul.city").append("<li class=" + e.split(":")[0] + ">" + e.split(":")[1] + "</li>");
+                    }
+                })
+                $("ul.city li").on("click", function () {
+                    $("ul.area").html("");
+                    $(this).css("color", "red").siblings().css("color", "black")
+                    var ci = this.className;
+                    res.forEach(function (e) {
+                        if (e.split(":")[0].length === 6 && e.split(":")[0].substring(0, 4) === ci) {
+                            $("ul.area").append("<li class=" + e.split(":")[0] + ">" + e.split(":")[1] + "</li>");
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
