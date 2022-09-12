@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="my-minireset.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+</head>
+
+<body>
+    <div class="bigbox">
+        <div class="box"></div>
+        <div class="probar">
+            <div class="slide"></div>
+        </div>
+        <div class="busc"></div>
+        <div></div>
+        <div class="hmbb">
+            <img src="./eee63cd.webp" alt="">
+        </div>
+        <div class="time">22:53</div>
+    </div>
+
+    <style>
+        .bigbox {
+            width: 158px;
+
+            height: 90px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bigbox .box {
+            width: 100%;
+            height: 90px;
+            background-image: url("./486142478_dc4dcb-0001.jpg");
+            background-size: 1600px;
+            background-position: 0 0;
+        }
+
+        .bigbox .probar {
+            width: 100%;
+            height: 10px;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .bigbox .probar .slide {
+            max-width: 142px;
+            height: 2px;
+            background-color: white;
+            line-height: 10px;
+            position: absolute;
+            top: 3px;
+            left: 8px;
+            border-radius: 2px;
+        }
+
+        .bigbox .busc {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(60, 49, 49, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .bigbox .busc div {
+            width: 300px;
+            height: 10px;
+            display: inline-block;
+            color: white;
+            font-size: 0.01rem;
+            transform: scale(0.5);
+            position: absolute;
+            top: 10px;
+            left: 110px;
+            font-weight: 10;
+            line-height: 10px;
+        }
+
+        .bigbox .time {
+            width: 20px;
+            height: 15px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font-size: 8px;
+            font-weight: 100;
+            color: white;
+        }
+
+        .bigbox .hmbb img {
+            /* display: block; */
+            opacity: 1;
+            width: 160px;
+            height: 90px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            /* transition: all .3s; */
+
+        }
+    </style>
+    <script>
+        var pvideo = {
+            // duration: 1303,
+            duration: 751,
+            img_x_len: 10,
+            img_y_len: 10,
+            img_x_size: 480,
+            img_y_size: 270,
+            image: [
+                "//bimp.hdslb.com/videoshotpvhdboss/486142478_dc4dcb-0001.jpg",
+                "//bimp.hdslb.com/videoshotpvhdboss/486142478_dc4dcb-0002.jpg",
+            ],
+            index: [
+                0, 0, 8, 14, 20, 25, 31, 39, 50, 61, 67, 73, 80, 87, 93, 104, 116, 126, 132, 138, 144, 152, 159, 170, 177,
+                186, 196, 207, 215, 224, 231, 238, 244, 249, 255, 260, 265, 271, 278, 283, 290, 297, 303, 311, 319, 330, 335,
+                350, 360, 365, 372, 383, 390, 401, 406, 411, 421, 428, 434, 444, 450, 457, 467, 472, 481, 487, 497, 502, 514,
+                520, 534, 542, 547, 555, 562, 568, 575, 581, 587, 592, 598, 605, 610, 615, 621, 633, 642, 650, 658, 668, 677,
+                690, 696, 702, 709, 715, 720, 733, 740, 746, 751, 759, 767, 776, 782, 790, 798, 804, 814, 826, 833, 840, 850,
+                856, 863, 872, 878, 886, 896, 903, 911, 918, 929, 937, 948, 953, 959, 965, 973, 979, 985, 994, 1001, 1015,
+                1022, 1028, 1034, 1040, 1047, 1059, 1064, 1071, 1077, 1084, 1090, 1099, 1105, 1111, 1121, 1130, 1139, 1150,
+                1156, 1162, 1171, 1178, 1184, 1191, 1197, 1203, 1210, 1216, 1221, 1228, 1233, 1242, 1250, 1260, 1272, 1282,
+                1292, 1297,
+            ],
+        };
+
+        var dm = [
+            "章鱼哥还是没有胜过强风暴雨(doge)",
+            "日本裁判",
+            "日本裁判",
+            "海绵宝宝笑死我了",
+            "黑人小哥",
+            "堡垒之夜",
+            "最喜欢的一集",
+            "最喜欢的一集",
+            "喜欢",
+            "我怎么觉得派大星这个配音我在神奇宝贝里听过",
+            "我看见你了",
+            "但凡章鱼哥早点回去都不至于这样",
+            "这……这我还真有可能“模仿”",
+            "为什么非要执着于台配或者央配呢",
+            "派总依旧稳定输出",
+            "包租公～",
+            "为什么台配的海绵宝宝跟低能儿似的",
+            "井字游戏，其实可以先手必胜的",
+            "我小时候就看的台配",
+            "终于找到了",
+        ];
+
+        $(".bigbox").mousemove(function () {
+            // console.log(event.pageX - this.offsetLeft);
+            // 鼠标放上 图片消失
+            // $("img").css("display", "none");
+            // console.log($(this));
+            $("img").css("opacity", 0);
+
+
+            // 确定鼠标的位置
+            var mx = event.pageX - this.offsetLeft;
+            // 鼠标在图片上经过的位置(index)
+            var mt = pvideo.duration / 158 * (event.pageX - this.offsetLeft);
+            // console.log(mx);
+
+            // 根据鼠标位置改变进度条长度
+            $(".slide").css("width", mx);
+
+            var k = 0;
+            pvideo.index.forEach(function (e, i) {
+                // if (i > 100) {
+                //     $(".box").css({
+                //         backgroundImage: "url(" + "./486142478_dc4dcb-0002.jpg" + ")",
+                //         backgroundPosition: "0 " + "0",
+                //     })
+
+                // }
+                // console.log(e, i);
+                if (i > 10) {
+                    k = parseInt(i / 10);
+                }
+
+                if (mt > e) {
+                    // console.log(e, i, mx);
+                    $(".box").css({
+                        backgroundPosition: "-" + 160 * (i - 1) + "px " + -90 * k + "px",
+                    })
+                }
+            })
+        })
+        $(".bigbox").mouseout(function () {
+            $("img").css("opacity", 1);
+        })
+
+
+        function Buscreen() {
+            this.x = 140;
+            this.y = Math.floor(Math.random() * 2);
+            this.node = document.createElement("div");
+            this.node.style.top = 10 + this.y * 10 + "px";
+            // this.node.style.left = $(".busc").width() + "px";
+            this.node.innerHTML = dm.splice(Math.floor(Math.random() * dm.length), 1);
+            $(".busc")[0].appendChild(this.node);
+        }
+
+        Buscreen.prototype.move = function () {
+            this.x -= 2.8;
+            this.node.style.left = this.x + "px";
+        }
+        var arr = [];
+        var b = new Buscreen();
+        arr.push(b);
+        setInterval(function () {
+            arr.forEach(function (e) {
+                e.move();
+            })
+            if (dm && arr[arr.length - 1].x < 70) {
+                var c = new Buscreen();
+                arr.push(c);
+            }
+        }, 100)
+
+    </script>
+</body>
+
+</html>

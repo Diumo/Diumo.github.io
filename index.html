@@ -47,62 +47,78 @@
         let html = [{
             title: "儿童模版",
             link: "./Children/kid.html",
-            image: "./img/accordion.gif",
+            image: "./img/child.png",
         },
         {
-            title: "手风琴",
-            link: "./Accordion/accordion.html",
-            image: "./img/accordion.gif",
-        }, {
-            title: "手风琴",
-            link: "./Accordion/accordion.html",
-            image: "./img/accordion.gif",
+            title: "携程旅游",
+            link: "./travel/travel.html",
+            image: "./img/travel.png",
         }]
 
         let js = [{
             title: "别踩白块",
             link: "./别踩白块/别踩白块.html",
-            image: "./img/accordion.gif",
+            image: "./img/white-block.png",
         },
         {
             title: "放大镜",
             link: "./magnifying-glass/fag.html",
-            image: "./img/accordion.gif",
+            image: "./img/fag.png",
         }, {
             title: "手风琴",
             link: "./Accordion/accordion.html",
-            image: "./img/accordion.gif",
+            image: "./img/accordion.png",
+        }, {
+            title: "找色块",
+            link: "./find-difference/find-difference.html",
+            image: "./img/find.png",
+        }, {
+            title: "抽奖",
+            link: "./raffle/raffle.html",
+            image: "./img/raffle.png",
+        }, {
+            title: "滚动时钟",
+            link: "./scroll-clock/scroll-clock.html",
+            image: "./img/scroll-clock.png",
         }];
 
 
         let jq = [{
             title: "bilibili漫画",
             link: "./bilibili漫画/comic.html",
-            image: "./img/accordion.gif",
+            image: "./img/comic.png",
         }, {
             title: "360全屏滚动",
             link: "./360/360.html",
-            image: "./img/accordion.gif",
+            image: "./img/360.png",
         }, {
             title: "三级联动",
             link: "./三级联动/linkage.html",
-            image: "./img/accordion.gif",
+            image: "./img/linkage.png",
+        }, {
+            title: "弹幕",
+            link: "./barrage/barrage.html",
+            image: "./img/barrage.png",
         }]
 
         let bs = [{
             title: "整容",
             link: "./整容/整容.html",
-            image: "./img/accordion.gif",
+            image: "./img/lift.png",
         }, {
             title: "服装",
-            link: "./服装/服装.html",
-            image: "./img/accordion.gif",
+            link: "./服装/cloth.html",
+            image: "./img/cloth.png",
         }]
 
         let hc = [{
+            title: "视差",
+            link: "./parallax/parallax.html.html",
+            image: "./img/parallax.png",
+        }, {
             title: "loading&hover",
             link: "./C3/loadings&hover.html",
-            image: "./img/accordion.gif",
+            image: "./img/load.png",
         }]
 
 
@@ -114,6 +130,7 @@
             box.append(span);
             let a = document.createElement("a");
             a.href = e.link;
+            a.target = "_blank";
             box.append(a);
             $(a).css({
                 backgroundImage: 'url(' + e.image + ')',
@@ -128,6 +145,7 @@
             box.append(span);
             let a = document.createElement("a");
             a.href = e.link;
+            a.target = "_blank";
             box.append(a);
             $(a).css({
                 backgroundImage: 'url(' + e.image + ')',
@@ -143,6 +161,7 @@
             box.append(span);
             let a = document.createElement("a");
             a.href = e.link;
+            a.target = "_blank";
             box.append(a);
             $(a).css({
                 backgroundImage: 'url(' + e.image + ')',
@@ -157,6 +176,7 @@
             box.append(span);
             let a = document.createElement("a");
             a.href = e.link;
+            a.target = "_blank";
             box.append(a);
             $(a).css({
                 backgroundImage: 'url(' + e.image + ')',
@@ -170,26 +190,13 @@
             box.append(span);
             let a = document.createElement("a");
             a.href = e.link;
+            a.target = "_blank";
             box.append(a);
             $(a).css({
                 backgroundImage: 'url(' + e.image + ')',
             })
             $(".hc").append(box);
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         $(".html").css({
             visibility: "visible",
@@ -199,6 +206,12 @@
             opacity: 0,
         });
 
+        $("ul li").eq(0).css({
+            backgroundColor: "orange"
+        }).siblings().css({
+            backgroundColor: "white"
+        })
+
         $("ul").on("click", "li", function () {
             $(".contain>div").eq($(this).index()).css({
                 visibility: "visible",
@@ -207,6 +220,12 @@
                 visibility: "hidden",
                 opacity: 0,
             });
+
+            $(this).css({
+                backgroundColor: "orange"
+            }).siblings().css({
+                backgroundColor: "white"
+            })
         })
     </script>
 </body>

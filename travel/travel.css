@@ -1,0 +1,325 @@
+body {
+  background-color: #f4f4f4;
+}
+body .travel {
+  width: 360px;
+  margin: 0 auto;
+  background-color: white;
+}
+body .travel .top .search {
+  padding: 12px 12px 6px;
+}
+body .travel .top .search .search-box {
+  padding: 5px;
+  border-radius: 25px;
+  border: 2px solid #0086f6;
+  display: flex;
+}
+body .travel .top .search .search-box i {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin: 0 8px;
+  font-size: 20px;
+  font-weight: 100;
+  color: #6b6d6b;
+}
+body .travel .top .search .search-box span {
+  color: #999999;
+}
+body .travel .services {
+  margin: 6px 12px 2px;
+  display: flex;
+  justify-content: space-around;
+}
+body .travel .services ul.list {
+  width: 19%;
+}
+body .travel .services ul.list li a {
+  background-color: orange;
+  height: 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+body .travel .services ul.list li a span.icon {
+  display: inline-block;
+  height: 28px;
+  width: 28px;
+}
+body .travel .services ul.list li a span {
+  font-size: 8px;
+  text-align: center;
+  line-height: 15px;
+}
+body .travel .services ul.list:nth-child(1) li:nth-child(1) a {
+  border-top-left-radius: 10px;
+  background-color: #fa6554;
+  color: white;
+}
+body .travel .services ul.list:nth-child(1) li:nth-child(2) a {
+  background-color: #fff5f1;
+}
+body .travel .services ul.list:nth-child(1) li:nth-child(3) a {
+  border-bottom-left-radius: 10px;
+  background-color: #fff5f1;
+}
+body .travel .services ul.list:nth-child(2) li:nth-child(1) a {
+  background-color: #418ffa;
+  color: white;
+}
+body .travel .services ul.list:nth-child(2) li:nth-child(2) a {
+  background-color: #eff9ff;
+}
+body .travel .services ul.list:nth-child(2) li:nth-child(3) a {
+  background-color: #eff9ff;
+}
+body .travel .services ul.list:nth-child(3) li:nth-child(1) a {
+  background-color: #618bff;
+  color: white;
+}
+body .travel .services ul.list:nth-child(3) li:nth-child(2) a {
+  background-color: #f2f5ff;
+}
+body .travel .services ul.list:nth-child(3) li:nth-child(3) a {
+  background-color: #f2f5ff;
+}
+body .travel .services ul.list:nth-child(4) li:nth-child(1) a {
+  background-color: #3dccb4;
+  color: white;
+}
+body .travel .services ul.list:nth-child(4) li:nth-child(2) a {
+  background-color: #ecfcf8;
+}
+body .travel .services ul.list:nth-child(4) li:nth-child(3) a {
+  background-color: #ecfcf8;
+}
+body .travel .services ul.list:last-child li:first-child a {
+  background-color: #ff933d;
+  border-top-right-radius: 10px;
+  color: white;
+}
+body .travel .services ul.list:last-child li:nth-child(2) a {
+  background-color: #fff9f2;
+}
+body .travel .services ul.list:last-child li:last-child a {
+  background-color: #fff9f2;
+  border-bottom-right-radius: 10px;
+}
+body .travel .switch {
+  width: 360px;
+  height: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+body .travel .switch span.c {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  background-color: #0086f6;
+  border-radius: 5px;
+  margin-right: 3px;
+}
+body .travel .switch span.d {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: #cccccc;
+  border-radius: 50%;
+}
+body .travel .hotel {
+  display: flex;
+  justify-content: space-around;
+}
+body .travel .hotel .menu {
+  width: 48%;
+}
+body .travel .hotel .menu a {
+  display: flex;
+  justify-content: space-between;
+}
+body .travel .hotel .menu a img {
+  width: 73px;
+  height: 20px;
+}
+body .travel .hotel .menu a div {
+  height: 16px;
+  line-height: 16px;
+  font-size: 10px;
+  background-color: #ffebe3;
+  color: #ff4607;
+  padding: 1px;
+  margin-right: 0px;
+}
+body .travel .hotel .menu .image .mask {
+  border-radius: 5px;
+  background-color: #999;
+  overflow: hidden;
+  position: relative;
+}
+body .travel .hotel .menu .image .mask img {
+  width: 200px;
+  height: 60px;
+  display: block;
+}
+body .travel .hotel .menu .image .mask .text {
+  width: 48px;
+  height: 14px;
+  background-color: #47535b;
+  color: white;
+  font-size: 4px;
+  font-weight: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 5px;
+}
+body .travel .hotel .menu .image span {
+  font-size: 16px;
+  color: #ff6600;
+}
+body .travel .hotel .rank {
+  width: 48%;
+}
+body .travel .hotel .rank a {
+  display: flex;
+  justify-content: space-between;
+}
+body .travel .hotel .rank a img {
+  width: 73px;
+  height: 20px;
+}
+body .travel .hotel .rank a div {
+  height: 16px;
+  line-height: 16px;
+  font-size: 10px;
+  background-color: #fdefd2;
+  color: #ae6e15;
+  padding: 1px 4px;
+}
+body .travel .hotel .rank .rest {
+  display: flex;
+  justify-content: space-between;
+}
+body .travel .hotel .rank .rest .left {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+body .travel .hotel .rank .rest .left .test {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 85px;
+  height: 60px;
+  position: relative;
+}
+body .travel .hotel .rank .rest .left .test img {
+  width: 85px;
+  height: 60px;
+}
+body .travel .hotel .rank .rest .left .test .sh {
+  width: 24px;
+  height: 14px;
+  background-color: #e4c38e;
+  color: #764d12;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 4px;
+}
+body .travel .hotel .rank .rest .left span {
+  font-size: 12px;
+  color: #333333;
+}
+body .travel .hotel .rank .rest .right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+body .travel .hotel .rank .rest .right .test {
+  border-radius: 5px;
+  overflow: hidden;
+  width: 85px;
+  height: 60px;
+  position: relative;
+}
+body .travel .hotel .rank .rest .right .test img {
+  width: 85px;
+  height: 60px;
+}
+body .travel .hotel .rank .rest .right .test .sh {
+  width: 24px;
+  height: 14px;
+  background-color: #e4c38e;
+  color: #764d12;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2px;
+  font-weight: 100;
+}
+body .travel .hotel .rank .rest .right span {
+  font-size: 12px;
+  color: #333333;
+}
+body .travel .star {
+  margin-top: 10px;
+  padding: 0 12px 12px;
+}
+body .travel footer .contact {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+body .travel footer .contact a {
+  width: 100px;
+  height: 30px;
+  border: 1px solid #999;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+}
+body .travel footer .map {
+  text-align: center;
+}
+body .travel footer .map .mac {
+  margin-bottom: 10px;
+}
+body .travel footer .map .mac a {
+  text-decoration: none;
+  color: black;
+  font-size: 10px;
+  font-weight: 100;
+  display: inlin-block;
+}
+body .travel footer .map p {
+  font-size: 10px;
+  font-weight: 100;
+}
+body .nav-footer {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  background-color: #fff;
+  position: fixed;
+  width: 360px;
+  bottom: 0;
+}
+body .nav-footer div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .nav-footer div p {
+  font-size: 10px;
+  font-weight: 100;
+}
+/*# sourceMappingURL=./travel.css.map */

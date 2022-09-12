@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./my-minireset.css">
+</head>
+
+<body>
+    <div class="raffle">
+        <div class="reward"></div>
+
+        <div class="block">
+            <span class="light">手机</span>
+            <span>平板</span>
+            <span>电磁炉</span>
+            <span>洗衣机</span>
+            <span>衣柜</span>
+            <span>冰箱</span>
+            <span>电脑</span>
+            <span>电视</span>
+            <div class="start">开始</div>
+        </div>
+    </div>
+
+    <style>
+        .raffle {
+            width: 360px;
+            margin: 0 auto;
+        }
+
+        .raffle .reward {
+            width: 360px;
+            height: 50px;
+            margin: 20px 0;
+            /* background-color: blue; */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 20px;
+
+            /* border: 1px solid black; */
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0 0 3px 2px;
+        }
+
+        .raffle .block {
+            width: 360px;
+            height: 360px;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-content: space-around;
+
+            /* background-color: wheat; */
+            position: relative;
+        }
+
+        .raffle .block span {
+            width: 30%;
+            height: 30%;
+            background-color: #13a2b7;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: all .3s;
+
+            border-radius: 15px;
+
+
+        }
+
+        .raffle .block span:nth-child(4) {
+            position: relative;
+            top: 0px;
+            left: 234px;
+        }
+
+        .raffle .block span:nth-child(5) {
+            position: relative;
+            top: 120px;
+            left: 117px;
+        }
+
+        .raffle .block span:nth-child(6) {
+            position: relative;
+            top: 120px;
+            left: -117px;
+        }
+
+
+
+        .raffle .block span:nth-child(7) {
+            position: relative;
+            top: 0px;
+            left: -37px;
+        }
+
+        .raffle .block span:nth-child(8) {
+            position: relative;
+            top: -120px;
+            left: -191px;
+        }
+
+        /* .raffle .block span:nth-child(9) {
+            position: relative;
+            top: -120px;
+            left: -117px;
+
+            background-color: red;
+        } */
+
+        .raffle .start {
+            width: 108px;
+            height: 108px;
+            position: absolute;
+            top: 126px;
+            left: 126px;
+            background-color: orange;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 15px;
+        }
+
+        .raffle .block .light {
+            background-color: rgb(87, 83, 83);
+        }
+    </style>
+
+    <script>
+        var rafEl = document.querySelector(".raffle")
+        var spanEl = rafEl.querySelectorAll("span");
+        var startEl = rafEl.querySelector(".start");
+        var rewardEl = rafEl.querySelector(".reward");
+        // var current = parseInt(Math.random() * 10 + 20);
+        // var index = 0;
+
+        startEl.onclick = function laff() {
+            var current = parseInt(Math.random() * 10 + 20);
+            var index = 0;
+
+            spanEl.forEach(function (ele, i) {
+                ele.classList.remove("light");
+                spanEl[0].classList.add("light");
+
+            })
+            rewardEl.innerHTML = "";
+            startEl.onclick = null;
+            startEl.style.cursor = "wait";
+
+            raff = setInterval(function () {
+                if (index !== current) {
+                    spanEl[index].classList.remove("light");
+                    if (index === 7) {
+                        current -= spanEl.length;
+                        index = -1;
+                    }
+                    spanEl[index + 1].classList.add("light");
+                    ++index;
+                    console.log(index);
+                } else {
+                    rewardEl.innerHTML = "恭喜你抽中了" + spanEl[index].innerHTML;
+                    clearInterval(raff);
+                    startEl.onclick = laff;
+                    startEl.style.cursor = "pointer";
+                    // index = 0;
+                    // current = parseInt(Math.random() * 10 + 20);
+
+                }
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
